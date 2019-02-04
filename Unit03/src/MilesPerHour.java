@@ -23,18 +23,22 @@ public class MilesPerHour
 
 	public MilesPerHour(int dist, int hrs, int mins)
 	{
+		
 	}
 
 	public void setNums(int dist, int hrs, int mins)
 	{
+		
 	}
 
 	public void calcMPH()
 	{
+		hours = mins / 60;
 	}
 
 	public void print()
 	{
+		
 	}
 	
 	//create a print or toString or both

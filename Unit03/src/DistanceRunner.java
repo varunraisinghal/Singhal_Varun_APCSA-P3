@@ -1,10 +1,10 @@
-//(c) A+ Computer Science
+//(c) A+ Computer Science 
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Varun Singhal
+//Date - 02/04/19
+//Class - AP Comp Sci A
+//Lab  - 3
 
 import java.util.Scanner; 
 import static java.lang.System.*;

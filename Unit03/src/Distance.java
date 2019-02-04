@@ -1,10 +1,10 @@
 //(c) A+ Computer Science 
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Varun Singhal
+//Date - 02/04/19
+//Class - AP Comp Sci A
+//Lab  - 3
 
 import java.util.Scanner; 
 import static java.lang.System.*;
@@ -17,10 +17,8 @@ public class Distance
 
 	public Distance()
 	{
-		xOne = 0;
-		yOne = 0;
-		xTwo = 0;
-		yTwo = 0;
+		setCoordinates(0,0,0,0);
+		distance = 0.0;
 	}
 
 	public Distance(int x1, int y1, int x2, int y2)
