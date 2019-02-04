@@ -15,13 +15,13 @@ public class DistanceRunner
 	public static void main( String[] args )
 	{
 		Scanner keyboard = new Scanner(System.in);
-		System.out.println("Enter X1:: ");
+		out.print("Enter X1:: ");
 		int xOne = keyboard.nextInt();
-		System.out.println("Enter Y1:: ");
+		out.print("Enter Y1:: ");
 		int yOne = keyboard.nextInt();
-		System.out.println("Enter X2:: ");
+		out.print("Enter X2:: ");
 		int xTwo = keyboard.nextInt();
-		System.out.println("Enter Y2:: ");
+		out.print("Enter Y2:: ");
 		int yTwo = keyboard.nextInt();
 		
 		Distance test = new Distance();
@@ -30,13 +30,13 @@ public class DistanceRunner
 		test.print();
 		
 		
-		System.out.println("Enter X1:: ");
+		out.print("Enter X1:: ");
 		int xOne1 = keyboard.nextInt();
-		System.out.println("Enter Y1:: ");
+		out.print("Enter Y1:: ");
 		int yOne1 = keyboard.nextInt();
-		System.out.println("Enter X2:: ");
+		out.print("Enter X2:: ");
 		int xTwo1 = keyboard.nextInt();
-		System.out.println("Enter Y2:: ");
+		out.print("Enter Y2:: ");
 		int yTwo1 = keyboard.nextInt();
 		
 		Distance test1 = new Distance();
@@ -45,13 +45,13 @@ public class DistanceRunner
 		test1.print();
 		
 		
-		System.out.println("Enter X1:: ");
+		out.print("Enter X1:: ");
 		int xOne2 = keyboard.nextInt();
-		System.out.println("Enter Y1:: ");
+		out.print("Enter Y1:: ");
 		int yOne2 = keyboard.nextInt();
-		System.out.println("Enter X2:: ");
+		out.print("Enter X2:: ");
 		int xTwo2 = keyboard.nextInt();
-		System.out.println("Enter Y2:: ");
+		out.print("Enter Y2:: ");
 		int yTwo2 = keyboard.nextInt();
 		
 		
