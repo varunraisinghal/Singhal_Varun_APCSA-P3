@@ -25,10 +25,8 @@ public class Distance
 
 	public Distance(int x1, int y1, int x2, int y2)
 	{
-		xOne = x1;
-		yOne = y1;
-		xTwo = x2;
-		yTwo = y2;
+		setCoordinates(0,0,0,0);
+		distance = 0.0;
 	}
 
 	public void setCoordinates(int x1, int y1, int x2, int y2)
@@ -46,7 +44,7 @@ public class Distance
 		
 		int yPortion = yOne - yTwo;
 		yPortion = (int) Math.pow(yPortion, 2);
-		distance = Math.sqrt(xPortion + yPortion);
+		distance = Math.sqrt(xPortion + yPortion); 
 	}
 	
 	public double getDistance()
@@ -56,7 +54,7 @@ public class Distance
 	
 	public void print()
 	{
-		System.out.println(getDistance());
+		System.out.println("distance == " + String.format("%.3f",getDistance()) + "\n");
 	}
 	
 	//complete print or the toString
