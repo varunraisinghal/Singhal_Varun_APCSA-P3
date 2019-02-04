@@ -15,7 +15,7 @@ public class Distance
 	private int xOne,yOne,xTwo,yTwo;
 	private double distance;
 
-	public Distane()
+	public Distance()
 	{
 	}
 
