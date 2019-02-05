@@ -1,22 +1,26 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name - 
-//Date -
-//Class -
-//Lab  -
+//Name - Varun Singhal
+//Date - 02/05/19
+//Class - AP Comp Sci A
+//Lab  - 3
 
 import static java.lang.System.*;
 import java.util.Scanner;
 
 public class Discount
 {
-	//instance variables and constructors could be used, but are not really needed
-	
-	//getDiscountedBill() will return final amount of the bill
-	//			if the bill is >2000, the bill receives a 15% discount
+	double bill = 0;
+
 	public static double getDiscountedBill(double bill)
 	{
-		return 0;
+		if (bill > 2000)
+		{
+			bill = (int) (bill * 0.85);
+		}
+		
+		out.print("Bill after discount :: " + bill);
+		return bill;
 	}
-}
+}	
