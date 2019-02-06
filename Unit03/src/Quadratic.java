@@ -18,22 +18,47 @@ public class Quadratic
 
 	public Quadratic()
 	{
+		
 	}
 
 	public Quadratic(int quadA, int quadB, int quadC)
 	{
+		a = quadA;
+		b = quadB;
+		c = quadC;
 	}
 
 	public void setEquation(int quadA, int quadB, int quadC)
 	{
+		a = quadA;
+		b = quadB;
+		c = quadC;
  	}
 
 	public void calcRoots( )
 	{
+		if ((a == b) && (b== c) && (c == 0))
+		{
+	    	System.out.println("Quadratic variables not initialized"); 			
+		}
+		else if (a ==0)
+		{
+	    	System.out.println("Quadratic variables - Divide by zero not permitted (a = 0)"); 	
+		}
+		else
+		{
+			rootOne = (-b + Math.sqrt(b*b-4*a*c))/(2*a);
+				
+			rootTwo = (-b - Math.sqrt(b*b-4*a*c))/(2*a);
+		}
+		
 	}
 
     public void print()
     {
+    	System.out.println("root One is : " + rootOne);
+    	System.out.println("root Two is : " + rootTwo);    	
+    	
     }
     
     //complete either print or the toString()
