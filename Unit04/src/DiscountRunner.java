@@ -17,27 +17,37 @@ public class DiscountRunner
 		
 		out.print("Enter the original bill amount :: ");
 		double amt = keyboard.nextDouble();
-		
-		Discount.getDiscountedBill(amt);
+		amt = Discount.getDiscountedBill(amt);
+		System.out.print("Bill after discount :: ");
+		System.out.printf("%.2f\n",amt);
+		System.out.println("\n");
 		
 		out.print("Enter the original bill amount :: ");
 		double amt1 = keyboard.nextDouble();
-		
-		Discount.getDiscountedBill(amt1);
+		amt1 = Discount.getDiscountedBill(amt1);
+		System.out.print("Bill after discount :: ");
+		System.out.printf("%.2f\n",amt1);
+		System.out.println("\n");
 		
 		out.print("Enter the original bill amount :: ");
 		double amt2 = keyboard.nextDouble();
-		
-		Discount.getDiscountedBill(amt2);
+		amt2 = Discount.getDiscountedBill(amt2);
+		System.out.print("Bill after discount :: ");
+		System.out.printf("%.2f\n",amt2);
+		System.out.println("\n");
 		
 		out.print("Enter the original bill amount :: ");
 		double amt3 = keyboard.nextDouble();
-		
-		Discount.getDiscountedBill(amt3);
+		amt3 = Discount.getDiscountedBill(amt3);
+		System.out.print("Bill after discount :: ");
+		System.out.printf("%.2f\n",amt3);
+		System.out.println("\n");
 		
 		out.print("Enter the original bill amount :: ");
 		double amt4 = keyboard.nextDouble();
-		
-		Discount.getDiscountedBill(amt4);
+		amt4 = Discount.getDiscountedBill(amt4);
+		System.out.print("Bill after discount :: ");
+		System.out.printf("%.2f\n",amt4);
+		System.out.println("\n");
 	}
 }

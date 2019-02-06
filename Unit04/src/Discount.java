@@ -15,12 +15,6 @@ public class Discount
 
 	public static double getDiscountedBill(double bill)
 	{
-		if (bill > 2000)
-		{
-			bill = (int) (bill * 0.85);
-		}
-		
-		out.print("Bill after discount :: " + bill);
-		return bill;
+		return (bill > 2000) ? (bill * 0.85) : bill;
 	}
 }	
