@@ -12,7 +12,7 @@ public class NumberVerify
 {
 	public static boolean isOdd( int num )
 	{
-		if (num % 2 == 1)
+		if (Math.abs(num) % 2 == 1)
 		{
 			return true;
 		}
@@ -20,7 +20,7 @@ public class NumberVerify
 	}
 	public static boolean isEven( int num )
 	{
-		if (num % 2 == 0)
+		if (Math.abs(num) % 2 == 0)
 		{
 			return true;
 		}
