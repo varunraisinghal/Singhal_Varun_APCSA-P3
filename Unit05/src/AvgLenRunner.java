@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Varun Singhal
+//Date - 02/08/19
 
 public class AvgLenRunner
 {
