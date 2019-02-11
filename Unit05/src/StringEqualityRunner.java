@@ -14,7 +14,7 @@ public class StringEqualityRunner
 {
 	public static void main( String args[] )
 	{
-		StringEquality stringEquality = new StringEquality();
+		StringEquality stringEquality = new StringEquality("hello", "goodbye");
 		Scanner keyboard = new Scanner(System.in);
 		int x = 0;
 		while ( x < 7)
