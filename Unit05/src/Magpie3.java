@@ -1,13 +1,3 @@
-/**
- * A program to carry on conversations with a human user.
- * This version: 
- * <ul><li>
- *    Uses advanced search for keywords 
- * </li></ul> 
- *    
- * @author Laurie White
- * @version April 2012
- */
 public class Magpie3
 {
 	/**
@@ -34,16 +24,36 @@ public class Magpie3
 		{
 			response = "Say something, please.";
 		}
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-		}
 		else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
 			response = "Tell me more about your family.";
+		}
+    else if (findKeyword(statement, "dog") >= 0 || findKeyword(statement, "cat") >= 0)
+    {
+      response = "Tell me more about your pets.";
+    }
+    else if (findKeyword(statement, "Mauro") >= 0)
+    {
+      response = "I love Mr. Mauro!";
+    }
+    else if (findKeyword(statement, "hi") >= 0 || findKeyword(statement, "hello") >= 0 || findKeyword(statement, "hey") >= 0)
+    {
+      response = "Hi yourself! How are you?";
+    }
+    else if (findKeyword(statement, "how are you") >= 0 || findKeyword(statement, "how's it going") >= 0)
+    {
+      response = "Good, thanks!";
+    }
+    else if (findKeyword(statement, "music") >= 0 || findKeyword(statement, "song") >= 0 || findKeyword(statement, "playlist") >=0 || findKeyword(statement, "album") >= 0)
+    {
+      response = "Tell me about your favorite music.";
+    }
+    else if (findKeyword(statement, "no") >= 0)
+		{
+			response = "Why so negative?";
 		}
 		else
 		{
@@ -144,7 +154,7 @@ public class Magpie3
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int) (r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -165,6 +175,14 @@ public class Magpie3
 		{
 			response = "You don't say.";
 		}
+    else if (whichResponse == 4)
+    {
+      response = "No way.";
+    }
+    else if (whichResponse == 5)
+    {
+      response = "That's nice.";
+    }
 
 		return response;
 	}

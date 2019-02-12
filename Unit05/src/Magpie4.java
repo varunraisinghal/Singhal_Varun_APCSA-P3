@@ -1,15 +1,3 @@
-/**
- * A program to carry on conversations with a human user.
- * This version:
- *<ul><li>
- * 		Uses advanced search for keywords 
- *</li><li>
- * 		Will transform statements as well as react to keywords
- *</li></ul>
- * @author Laurie White
- * @version April 2012
- *
- */
 public class Magpie4
 {
 	/**
@@ -35,24 +23,53 @@ public class Magpie4
 		{
 			response = "Say something, please.";
 		}
-
-		else if (findKeyword(statement, "no") >= 0)
-		{
-			response = "Why so negative?";
-		}
-		else if (findKeyword(statement, "mother") >= 0
+    else if (findKeyword(statement, "mother") >= 0
 				|| findKeyword(statement, "father") >= 0
 				|| findKeyword(statement, "sister") >= 0
 				|| findKeyword(statement, "brother") >= 0)
 		{
 			response = "Tell me more about your family.";
 		}
-
+    else if (findKeyword(statement, "dog") >= 0 || findKeyword(statement, "cat") >= 0)
+    {
+      response = "Tell me more about your pets.";
+    }
+    else if (findKeyword(statement, "Mauro") >= 0)
+    {
+      response = "I love Mr. Mauro!";
+    }
+    else if (findKeyword(statement, "hi") >= 0 || findKeyword(statement, "hello") >= 0 || findKeyword(statement, "hey") >= 0)
+    {
+      response = "Hi yourself! How are you?";
+    }
+    else if (findKeyword(statement, "how are you") >= 0 || findKeyword(statement, "how's it going") >= 0)
+    {
+      response = "Good, thanks!";
+    }
+    else if (findKeyword(statement, "music") >= 0 || findKeyword(statement, "song") >= 0 || findKeyword(statement, "playlist") >=0 || findKeyword(statement, "album") >= 0)
+    {
+      response = "Tell me about your favorite music.";
+    }
+		else if (findKeyword(statement, "no") >= 0)
+		{
+			response = "Why so negative?";
+		}
+		
 		// Responses which require transformations
 		else if (findKeyword(statement, "I want to", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
+
+    else if (findKeyword(statement, "I want", 0) >= 0)
+    {
+      response = transformIWantStatement(statement);
+    }
+
+    else if (findKeyword(statement, "I", 0 ) >= 0 && findKeyword(statement, "you", 0 ) >= 1)
+    {
+      response = transformIYouStatement(statement);
+    }
 
 		else
 		{
@@ -95,7 +112,20 @@ public class Magpie4
 		return "What would it mean to " + restOfStatement + "?";
 	}
 
-	
+	private String transformIWantStatement (String statement)
+  {
+    statement = statement.trim();
+    String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+    int psnWant = findKeyword (statement, "I want", 0);
+    String restOfStatement = statement.substring(psnWant + 7).trim();
+    return "Would you really be happy if you had " + restOfStatement + "?";
+  }
 	
 	/**
 	 * Take a statement with "you <something> me" and transform it into 
@@ -122,7 +152,23 @@ public class Magpie4
 		return "What makes you think that I " + restOfStatement + " you?";
 	}
 	
-	
+	private String transformIYouStatement(String statement)
+  {
+    statement = statement.trim();
+		String lastChar = statement.substring(statement
+				.length() - 1);
+		if (lastChar.equals("."))
+		{
+			statement = statement.substring(0, statement
+					.length() - 1);
+		}
+
+    int psnOfI = findKeyword (statement, "I", 0);
+    int psnOfIYou = findKeyword (statement, "you", psnOfI + 1);
+
+    String restOfStatement = statement.substring(psnOfI + 1, psnOfIYou).trim();
+    return "Why do you " + restOfStatement + " me?";
+  }
 
 	
 	
@@ -191,7 +237,7 @@ public class Magpie4
 	 */
 	private String getRandomResponse()
 	{
-		final int NUMBER_OF_RESPONSES = 4;
+		final int NUMBER_OF_RESPONSES = 6;
 		double r = Math.random();
 		int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
 		String response = "";
@@ -212,8 +258,17 @@ public class Magpie4
 		{
 			response = "You don't say.";
 		}
+    else if (whichResponse == 4)
+    {
+      response = "No way.";
+    }
+    else if (whichResponse == 5)
+    {
+      response = "That's nice.";
+    }
 
 		return response;
 	}
+  
 
 }
