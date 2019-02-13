@@ -31,7 +31,7 @@ public class LetterRemover
 		String cleaned = sentence;
 		while (i < cleaned.length())
 		{
-			
+			cleaned = cleaned.substring(0, lookFor) + cleaned.substring(lookFor,cleaned.length());
 		}
 
 		return cleaned;
