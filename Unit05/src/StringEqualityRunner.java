@@ -17,7 +17,7 @@ public class StringEqualityRunner
 		StringEquality stringEquality = new StringEquality("hello", "goodbye");
 		Scanner keyboard = new Scanner(System.in);
 		int x = 0;
-		while ( x < 7)
+		while ( x < 8)
 		{
 			out.print("Enter a word you would like to compare :: ");
 			String word1 = keyboard.nextLine();
