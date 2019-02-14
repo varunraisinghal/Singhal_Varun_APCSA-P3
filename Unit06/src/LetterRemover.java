@@ -27,18 +27,26 @@ public class LetterRemover
 
 	public String removeLetters()
 	{
-		int i = 0;
-		String cleaned = sentence;
-		while (i < cleaned.length())
+		String newSentence = "";
+		int x = sentence.length();
+		
+		for (int i = 0; i < x; i++) 
 		{
-			cleaned = cleaned.substring(0, lookFor) + cleaned.substring(lookFor,cleaned.length());
+			if (sentence.charAt(i) == lookFor)
+			{
+				
+			}
+			else 
+			{
+				newSentence = newSentence + sentence.charAt(i);
+			}
 		}
-
+		String cleaned = newSentence;
 		return cleaned;
 	}
 
 	public String toString()
 	{
-		return sentence + " - letter to remove " + lookFor;
+		return sentence + " - letter to remove " + lookFor + "\n" + removeLetters();
 	}
 }
