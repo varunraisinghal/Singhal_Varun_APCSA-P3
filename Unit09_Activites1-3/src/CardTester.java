@@ -9,18 +9,12 @@ public class CardTester {
 	 */
 	public static void main(String[] args) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
-		Card aceOfSpades = new Card("Ace", "Spades", 1);
+		Card x = new Card("King", "Hearts", 13);
+		Card y = new Card("Queen", "Spades", 12);
+		Card z = new Card("King", "Hearts", 13);
+		System.out.println(x+""+y+""+z);
+		System.out.println(x.matches(y));
+		System.out.println(x.matches(z));
 		
-		System.out.println(aceOfSpades.toString());
-		
-		Card aceOfDiamonds = new Card("Ace", "Diamonds", 1);
-		
-		System.out.println(aceOfDiamonds.toString());
-		
-		System.out.println(aceOfDiamonds.matches(aceOfSpades));
-		
-		Card AceOfSpades = new Card("Ace", "Spades", 1);
-		
-		System.out.println(AceOfSpades.matches(aceOfSpades));
 	}
 }

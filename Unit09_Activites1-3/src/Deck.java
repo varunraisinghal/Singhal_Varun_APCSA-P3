@@ -13,6 +13,7 @@ public class Deck {
 	 */
 	//private List<Card> cards;
 	private Card[] cards;
+	
 
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -32,18 +33,21 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		int num = 0;
-		for (int i = 0; i < ranks.length; i++) {
-			for (int a = 0; a < suits.length; a++) {
-				for (int b = 0; b < values.length; b++) {
-					Card newCard = new Card(ranks[i], suits[a], values[b]);
-					cards[num] = newCard;
-					num++;
+		
+		cards =  new Card[ranks.length * suits.length];
+		int i = 0;
+		
+			for (int j = 0; j < ranks.length; j++)
+			{
+				for (int k = 0; k < suits.length; k++)
+				{
+					Card aCard = new Card(ranks[j], suits[k], values[j]);
+					cards[i] = aCard;
+					i++;
 				}
 			}
-		}
+		shuffle();
 		size = cards.length;
-		
 	}
 
 
@@ -54,7 +58,6 @@ public class Deck {
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
 		return size == 0;
-		
 	}
 
 	/**
@@ -72,6 +75,16 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		for (int k = cards.length-1; k>0; k--)
+		{
+			int howMany = k+1;
+			int start = 0;
+			int randPos = (int) (Math.random() * howMany) + start;
+			Card temp = cards[k];
+			cards[k] = cards[randPos];
+			cards[randPos] = temp;
+			size = cards.length;
+		}
 	}
 
 	/**
@@ -81,8 +94,10 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if (isEmpty() == true) return null;
 		size--;
-		return cards[size];
+		Card returned = cards[size];
+		return returned;
 	}
 
 	/**
@@ -105,7 +120,7 @@ public class Deck {
 		}
 
 		rtn = rtn + "\nDealt cards: \n";
-		for (int k = (cards.length) - 1; k >= size; k--) {
+		for (int k = cards.length - 1; k >= size; k--) {
 			rtn = rtn + cards[k];
 			if (k != size) {
 				rtn = rtn + ", ";
