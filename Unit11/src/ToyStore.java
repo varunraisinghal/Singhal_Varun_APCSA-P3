@@ -13,7 +13,7 @@ public class ToyStore
 	private ArrayList<Toy> toyList;
 
 	public ToyStore()
-	{
+	{	
 	}
 
 	public void loadToys( String toys )
