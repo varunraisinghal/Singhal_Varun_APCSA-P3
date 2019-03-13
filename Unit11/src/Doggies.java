@@ -17,7 +17,7 @@ public class Doggies
 	public void set(int spot, int age, String name)
 	{
 		Dog bigDumb = new Dog(age, name);
-		if ( 0 < spot && spot < pups.length -1 )
+		if ( 0 <= spot && spot < pups.length)
 		{
 			pups[spot] = bigDumb;
 		}
@@ -40,15 +40,15 @@ public class Doggies
 
 	public String getNameOfYoungest()
 	{
-		int dogChecker = 0;
-		for (int i = 0; i < 1; i++)
+		int dogChecker1 = 0;
+		for (int j = 0; j < pups.length; j++)
 		{
-			if (pups[dogChecker].getAge() > pups[i].getAge())
+			if (pups[dogChecker1].getAge() > pups[j].getAge())
 			{
-				dogChecker = i;
+				dogChecker1 = j;
 			}
 		}
-		return pups[dogChecker].getName();
+		return pups[dogChecker1].getName();
 	}
 
 	public String toString()
