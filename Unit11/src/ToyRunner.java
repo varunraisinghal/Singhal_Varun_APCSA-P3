@@ -1,4 +1,4 @@
-	//(c) A+ Computer Science
+//(c) A+ Computer Science
 //www.apluscompsci.com
 //Name -
 
@@ -12,20 +12,16 @@ public class ToyRunner
 	{
 		Scanner keyboard = new Scanner(System.in);
 	   	String choice="";
-			do
-			{
-				out.print("Enter the toy:: ");
-				String toy = keyboard.nextLine();
+			do{
+				out.print("\nEnter the toy:: ");
+				String toy = keyboard.next();
 		
 				out.print("Enter the count:: ");
 	 			int count = keyboard.nextInt();			
-
-				System.out.println(toy + " " + count);
-				System.out.print("\nDo you want to enter another toy? ");
-				choice=keyboard.next();
-				System.out.print("\n");
-				keyboard.nextLine();
 				
+				System.out.println(toy+" " + count);
+				System.out.print("\nDo you want to enter another toy? ");
+				choice=keyboard.next();			
 			}while(choice.equals("Y")||choice.equals("y"));		
 	}
 }
