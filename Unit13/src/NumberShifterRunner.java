@@ -12,9 +12,9 @@ public class NumberShifterRunner
 {
 	public static void main( String args[] ) throws IOException
 	{
+		NumberShifter n = new NumberShifter();
+		n.makeLucky7Array(10);
+		System.out.print(n);
 		//add test cases
 	}
 }
-
-
-
