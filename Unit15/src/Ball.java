@@ -12,8 +12,6 @@ public class Ball extends Block implements Collidable
 	private int xSpeed;
 	private int ySpeed;
 
-
-	//add the other Ball constructors
 	public Ball()
 	{
 		super(200,200);
@@ -21,103 +19,105 @@ public class Ball extends Block implements Collidable
 		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y)
-	{
-		super(x,y);
-		xSpeed = 3;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height)
-	{
-		super(x,y,width,height);
-		xSpeed = 3;
-		ySpeed = 1;
-		setColor(Color.RED);
-	}
-	
-	public Ball(int x, int y, int width, int height, Color col)
-	{
-		super(x,y,width,height,col);
-		xSpeed = 3;
-		ySpeed = 1;
-	}
-	
-	public Ball(int x, int y, int width, int height, Color col, int xSpd, int ySpd)
-	{
-		super(x,y,width,height,col);
-		setXSpeed(xSpd);
-		setYSpeed(ySpd);
-	}
-	
-	public Ball(int x, int y, int width, int height, int xSpd, int ySpd)
-	{
-		super(x,y,width,height);
-		setXSpeed(xSpd);
-		setYSpeed(ySpd);
-	}
+	//add other Ball constructors
 
-	   
-   //add the set methods
-   public void setXSpeed(int xSpd){
-	   xSpeed = xSpd;
-   }
-   
-   public void setYSpeed(int ySpd){
-	   ySpeed = ySpd;
-   }
-
+	public Ball(int x, int y) {
+		super(x, y);
+	}
+	
+	public Ball(int x, int y, int w, int h) {
+		super(x, y, w, h);
+	}
+	
+	public Ball(int x, int y, int w, int h, Color a) {
+		super(x, y, w, h, a);
+	}
+	
+	public Ball(int x, int y, int w, int h, Color a, int thexs, int theys) {
+		super(x, y, w, h, a);
+		setXSpeed(thexs);
+		setYSpeed(theys);
+	}
+	
+	//add the set methods
+	
+	public void setXSpeed(int xspeed) {
+		xSpeed = xspeed;
+	}
+	
+	public void setYSpeed(int yspeed) {
+		ySpeed = yspeed;
+	}
    
    public void moveAndDraw(Graphics window)
    {
-   	//draw a white ball at old ball location
-	  draw(window,Color.WHITE);
+   	  draw(window, Color.WHITE);
       setX(getX()+xSpeed);
-		//setY
-      setY(getY()+ySpeed);
-		//draw the ball at its new location
-      draw(window);
+      setY(getY() + ySpeed);
+      draw(window, this.getColor());
    }
    
 	public boolean equals(Object obj)
 	{
-		if(super.equals((Ball) obj) && getXSpeed() == ((Ball) obj).getXSpeed() && getYSpeed() == ((Ball) obj).getYSpeed()){
+		Ball myball = (Ball) obj;
+		if (myball.getX() == this.getX() && myball.getY() == this.getY() 
+				&& myball.getWidth() == this.getWidth() 
+				&& myball.getHeight() == this.getHeight() && myball.getColor() == this.getColor()
+				&& myball.getXSpeed() == this.getXSpeed() && myball.getYSpeed() == this.getYSpeed()) {
 			return true;
 		}
 		return false;
-	}   
-
-   //add the get methods
+	}  
 	
-	public int getXSpeed(){
+	//add the get methods
+
+	public int getXSpeed() {
 		return xSpeed;
 	}
 	
-	public int getYSpeed(){
+	public int getYSpeed() {
 		return ySpeed;
 	}
 	
+	@Override
+	public boolean didCollideLeft(Object obj) {
+		Ball ball = (Ball) obj;
+		if (ball.getX() < -20) {
+			return true;
+		}
+		return false;
+	}
 	
-	public boolean didCollideLeft(Object obj){
-		Block x = (Block) obj;
-		return getX() - getWidth() <= x.getX() - x.getWidth();
+	public boolean didCollideRight(Object obj) {
+		Ball ball = (Ball) obj;
+		if (ball.getX() > 790) {
+			return true;
+		}
+		return false;
 	}
-	public boolean didCollideRight(Object obj){
-		Block x = (Block) obj;
-		return getX() - getWidth() >= x.getX() - x.getWidth();
+	
+	public boolean didCollideTop(Object obj) {
+		Ball ball = (Ball) obj;
+		if (ball.getY() < 10) {
+			return true;
+		}
+		return false;
 	}
-	public boolean didCollideTop(Object obj){
-		Block x = (Block) obj;
-		return getY() - getHeight() <= x.getY() - x.getHeight();
+	
+	public boolean didCollideBottom(Object obj) {
+		Ball ball = (Ball) obj;
+		if (ball.getY() >= 480) {
+			return true;
+		}
+		return false;
 	}
-	public boolean didCollideBottom(Object obj){
-		Block x = (Block) obj;
-		return getY() - getHeight() >= x.getY() - x.getHeight();
-	}
-
-   //add a toString() method
-	public String toString(){
-		String output = super.toString() + xSpeed + " " + ySpeed;
-		return output;
+	
+	
+	//add a toString() method
+	
+	public String toString() {
+		return this.getX() + " " + this.getY() + " " + this.getWidth() 
+		+ " " + this.getHeight() + " " + this.getColor() 
+		+ " " +  xSpeed + " " + ySpeed;
 	}
 }
