@@ -1,6 +1,8 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
+//© A+ Computer Science  -  www.apluscompsci.com
 //Name -
+//Date -
+//Class -
+//Lab  -
 
 import static java.lang.System.*;
 import java.awt.Color;

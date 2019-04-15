@@ -1,7 +1,9 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
+//© A+ Computer Science  -  www.apluscompsci.com
 //Name -
- 
+//Date -
+//Class -
+//Lab  -
+
 import javax.swing.JFrame;
 import java.awt.Component;
 
@@ -14,21 +16,19 @@ public class Tester extends JFrame
 	{
 		super("PONG TESTER");
 		setSize(WIDTH,HEIGHT);
-
-		getContentPane().add(new BlockTestTwo());
-
+		
+		//getContentPane().add(new BallTestTwo());		
+		
 		//uncomment when you are ready to test the Ball
-		//getContentPane().add(new BallTestTwo());
-
-		//PaddleTestTwo padTest = new PaddleTestTwo();
-		//((Component)padTest).setFocusable(true);
-		//getContentPane().add(padTest);
-
+		//getContentPane().add(new BallTestTwo());		
+		
+		PaddleTestTwo padTest = new PaddleTestTwo();
+		((Component)padTest).setFocusable(true);			
+		getContentPane().add(padTest);
+				
 		setVisible(true);
-
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	
 	public static void main( String args[] )
 	{
 		Tester run = new Tester();

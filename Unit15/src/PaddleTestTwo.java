@@ -1,6 +1,8 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
+//© A+ Computer Science  -  www.apluscompsci.com
 //Name -
+//Date -
+//Class -
+//Lab  -
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,15 +19,17 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 {
 	private Ball ball;
 	private Paddle leftPaddle;
+	private Paddle rightPaddle;
 	private boolean[] keys;		//keeps track of what keys are pressed
 
 	public PaddleTestTwo()
 	{
 		//set up all game variables
-
+		leftPaddle = new Paddle(100,100,10,50,Color.RED,5);
+		rightPaddle = new Paddle(700,100,10,50,Color.GREEN,5);
 
 		//instantiate a Ball
-		
+		ball = new Ball(10,10,20,20,Color.RED);
 		
 		
 		//instantiate a left Paddle
@@ -57,8 +61,22 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 
 	public void paint(Graphics window)
 	{
+		
+		if (ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(ball.getXSpeed()) &&
+				(ball.getY() >= leftPaddle.getY() &&
+				ball.getY() <= leftPaddle.getY() + leftPaddle.getHeight() ||
+				ball.getY() + ball.getHeight() >= leftPaddle.getY() &&
+				ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight() )	){
+				if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed())){
+					ball.setYSpeed(ball.getYSpeed() * -1);
+				}
+				else {
+					ball.setXSpeed(ball.getXSpeed() * -1);
+				}
+			}
 		ball.moveAndDraw(window);
 		leftPaddle.draw(window);
+		rightPaddle.draw(window);
 
 		if(!(ball.getX()>=10 && ball.getX()<=550))
 		{
@@ -78,16 +96,16 @@ public class PaddleTestTwo extends Canvas implements KeyListener, Runnable
 		if(keys[1] == true)
 		{
 			//move left paddle down and draw it on the window
-
+			leftPaddle.moveDownAndDraw(window);
 
 		}
 		if(keys[2] == true)
 		{
-
+			rightPaddle.moveUpAndDraw(window);
 		}
 		if(keys[3] == true)
 		{
-
+			rightPaddle.moveDownAndDraw(window);
 		}
 	}
 
