@@ -1,13 +1,11 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//(c) A+ Computer Science
+//www.apluscompsci.com
 //Name -
-//Date -
-//Class -
-//Lab  -
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Ball extends Block implements Collidable
+public class Ball extends Block
 {
 	private int xSpeed;
 	private int ySpeed;
@@ -15,109 +13,92 @@ public class Ball extends Block implements Collidable
 	public Ball()
 	{
 		super(200,200);
-		xSpeed = 3;
+		xSpeed = 1;
+		ySpeed = 1;
+	}
+	//add the other Ball constructors
+	public Ball(int x, int y) {
+		super(x,y);
+		xSpeed = 1;
 		ySpeed = 1;
 	}
 	
-	//add other Ball constructors
-
-	public Ball(int x, int y) {
-		super(x, y);
+	public Ball(int x, int y, int width) {
+		super(x,y,width);
+		xSpeed = 1;
+		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int w, int h) {
-		super(x, y, w, h);
+	public Ball(int x, int y, int width, int height) {
+		super(x,y,width,height);
+		xSpeed = 1;
+		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int w, int h, Color a) {
-		super(x, y, w, h, a);
+	public Ball(int x, int y, int width, int height, int xSpeed) {
+		super(x,y,width,height);
+		setXSpeed(xSpeed);
+		ySpeed = 1;
 	}
 	
-	public Ball(int x, int y, int w, int h, Color a, int thexs, int theys) {
-		super(x, y, w, h, a);
-		setXSpeed(thexs);
-		setYSpeed(theys);
+	public Ball(int x, int y, int width, int height, int xSpeed, int ySpeed) {
+		super(x,y,width,height);
+		setXSpeed(xSpeed);
+		setYSpeed(ySpeed);
 	}
 	
-	//add the set methods
+	public Ball(int x, int y, int width, int height, Color color) {
+		super(x,y,width,height,color);
+		xSpeed = 1;
+		ySpeed = 1;
+	}	
 	
-	public void setXSpeed(int xspeed) {
-		xSpeed = xspeed;
+	public Ball(int x, int y, int width, int height, Color color, int xSpeed) {
+		super(x,y,width,height,color);
+		setXSpeed(xSpeed);
+		ySpeed = 1;
 	}
 	
-	public void setYSpeed(int yspeed) {
-		ySpeed = yspeed;
+	public Ball(int x, int y, int width, int height, Color color, int xSpeed, int ySpeed) {
+		super(x,y,width,height,color);
+		setXSpeed(xSpeed);
+		setYSpeed(ySpeed);
 	}
-   
+	
+   //add the set methods
+   public void setXSpeed(int x) {
+	   xSpeed = x;
+   }
+   public void setYSpeed(int y) {
+	   ySpeed = y;
+   }
    public void moveAndDraw(Graphics window)
    {
-   	  draw(window, Color.WHITE);
-      setX(getX()+xSpeed);
-      setY(getY() + ySpeed);
-      draw(window, this.getColor());
+   	//draw a white ball at old ball location
+	   draw(window,Color.white);
+	       setX(getX()+xSpeed);
+		//setY
+      setY(getY()+ySpeed);
+		//draw the ball at its new location
+      draw(window);
    }
-   
 	public boolean equals(Object obj)
 	{
-		Ball myball = (Ball) obj;
-		if (myball.getX() == this.getX() && myball.getY() == this.getY() 
-				&& myball.getWidth() == this.getWidth() 
-				&& myball.getHeight() == this.getHeight() && myball.getColor() == this.getColor()
-				&& myball.getXSpeed() == this.getXSpeed() && myball.getYSpeed() == this.getYSpeed()) {
+		Ball temp = (Ball) obj;
+		if(equals(obj) && xSpeed == temp.getXSpeed() && ySpeed == temp.getYSpeed()) {
 			return true;
 		}
 		return false;
-	}  
-	
-	//add the get methods
-
+	}   
+   //add the get methods
 	public int getXSpeed() {
 		return xSpeed;
 	}
-	
 	public int getYSpeed() {
 		return ySpeed;
 	}
-	
-	@Override
-	public boolean didCollideLeft(Object obj) {
-		Ball ball = (Ball) obj;
-		if (ball.getX() < -20) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean didCollideRight(Object obj) {
-		Ball ball = (Ball) obj;
-		if (ball.getX() > 790) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean didCollideTop(Object obj) {
-		Ball ball = (Ball) obj;
-		if (ball.getY() < 10) {
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean didCollideBottom(Object obj) {
-		Ball ball = (Ball) obj;
-		if (ball.getY() >= 480) {
-			return true;
-		}
-		return false;
-	}
-	
-	
-	//add a toString() method
-	
+   //add a toString() method
 	public String toString() {
-		return this.getX() + " " + this.getY() + " " + this.getWidth() 
-		+ " " + this.getHeight() + " " + this.getColor() 
-		+ " " +  xSpeed + " " + ySpeed;
+		return getX() + "," + getY() + "," + getWidth() + "," + getHeight() + "," + getColor().toString() + "," + xSpeed + "," + ySpeed;
 	}
 }

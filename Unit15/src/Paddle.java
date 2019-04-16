@@ -1,8 +1,6 @@
-//© A+ Computer Science  -  www.apluscompsci.com
+//(c) A+ Computer Science
+//www.apluscompsci.com
 //Name -
-//Date -
-//Class -
-//Lab  -
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,62 +12,62 @@ public class Paddle extends Block
 
    public Paddle()
    {
-	  super(10,10);
-      speed =5;
+	 super(10,10);
+     speed = 5;
    }
-   
- //add the other Paddle constructors
-
-   public Paddle(int x, int y) {
-	   super(x, y);
+   //add the other Paddle constructors
+   public Paddle(int x,int y) {
+	  super(x,y);
+	  speed = 5;
    }
-
-   public Paddle(int x, int y, int w, int h) {
-	   super(x, y, w, h);
+   public Paddle(int x, int y,int nSpeed) {
+	   super(x,y);
+	   speed = nSpeed;
    }
-   
-   public Paddle(int x, int y, int thes) {
-	   super(x, y);
-	   setSpeed(thes);
+   public Paddle(int x, int y,int width,int height) {
+	   super(x,y,width,height);
+	   speed = 5;
    }
-   
-   public Paddle(int x, int y, int w, int h, int thes) {
-	   super(x, y, w, h);
-	   setSpeed(thes);
+   public Paddle(int x, int y,int width,int height,Color color) {
+	   super(x,y,width,height,color);
+	   speed = 5;
    }
-   
-   public Paddle(int x, int y, int w, int h, Color a, int thes) {
-	   super(x, y, w, h, a);
-	   setSpeed(thes);
+   public Paddle(int x, int y,int width,int height,int nSpeed) {
+	   super(x,y,width,height);
+	   speed = nSpeed;
    }
-   
-   public void setSpeed (int s) {
-	   speed = s;
+   public Paddle(int x, int y,int width,int height,Color color,int nSpeed) {
+	   super(x,y,width,height,color);
+	   speed = nSpeed;
    }
 
+   public void setSpeed(int newS) {
+	   speed = newS;
+   }
+	   
+  
    public void moveUpAndDraw(Graphics window)
    {
-	   draw(window, Color.WHITE);
-	   setPos(getX(), getY() - getSpeed());
-	   draw(window, getColor());
+	   setY(getY() + speed);
+	   draw(window);
+
    }
 
    public void moveDownAndDraw(Graphics window)
    {
-	   draw(window, Color.WHITE);
-	   setPos(getX(), getY() + getSpeed());
-	   draw(window, getColor());
+	   setY(getY() - speed);
+	   draw(window);
+
    }
 
+   //add get methods
    public int getSpeed() {
 	   return speed;
    }
    
- //add a toString() method
+   //add a toString() method
    public String toString() {
+	return getX() + "," + getY() + "," +  getWidth() + ","  + getHeight() + "," + getColor().toString() + "," + speed;
 	   
-	 return this.getX() + " " + this.getY() + " " + this.getWidth() 
-		+ " " + this.getHeight() + " " + this.getColor() 
-		+ " " +  speed;
-}
+   }
 }
