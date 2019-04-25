@@ -136,27 +136,27 @@ public class PictureTester
     * method in Java */
   public static void main(String[] args)
   {
-    // uncomment a call here to run a test
-    // and comment out the ones you don't want
-    // to run
+    //uncomment a call here to run a test
+    //and comment out the ones you don't want
+    //to run
     //testZeroBlue();
-   // testKeepOnlyBlue();
-   // testKeepOnlyRed();
-   // testKeepOnlyGreen();
+    //testKeepOnlyBlue();
+    //testKeepOnlyRed();
+    //testKeepOnlyGreen();
     //testNegate();
     //testGrayscale();
     //testFixUnderwater();
-	  //testMirrorDiagonal();
-  //testMirrorHorizontalBotToTop();
-    testMirrorVertical();
-   // testMirrorVerticalRightToLeft();
-  // testMirrorHorizontal();
-   // testMirrorTemple();
+    //testMirrorDiagonal();
+    //testMirrorHorizontalBotToTop();
+    //testMirrorVertical();
+    //testMirrorVerticalRightToLeft();
+    //testMirrorHorizontal();
+    //testMirrorTemple();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
-   // testMyCollage();
+    //testMyCollage();
     //testCopy();
     //testEdgeDetection();
     //testEdgeDetection2();
