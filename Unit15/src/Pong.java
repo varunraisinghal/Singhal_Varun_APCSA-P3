@@ -16,24 +16,24 @@ import java.awt.event.ActionListener;
 public class Pong extends Canvas implements KeyListener, Runnable
 {
 	private Ball ball;
-	//private BlinkyBall ball;
-	//private SpeedUpBall ball;
 	private Paddle leftPaddle;
 	private Paddle rightPaddle;
 	private boolean[] keys;
 	private BufferedImage back;
-	private int leftScore=0;
-	private int rightScore=0;
-	private int speed = 2;
+	private int lscore;
+	private int rscore;
+
+
 	public Pong()
 	{
 		//set up all variables related to the game
-		
-		ball = new Ball(200,200,10,10,1,1);
-		leftPaddle = new Paddle(20,300,10,50,Color.black,speed);
-		rightPaddle = new Paddle(750,300,10,50,Color.black,speed);
+		ball = new Ball(10, 100, 10, 10, Color.BLACK, 2, 1);
+		leftPaddle = new Paddle(20, 200, 10, 40, Color.RED, 2);
+		rightPaddle = new Paddle(760, 200, 10, 40, Color.RED, 2);
 		keys = new boolean[4];
-		ball.setColor(Color.red);
+		lscore = 0;
+		rscore = 0;
+
     
     	setBackground(Color.WHITE);
 		setVisible(true);
@@ -44,101 +44,119 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	
    public void update(Graphics window){
 	   paint(window);
-	  
    }
-   public void restart() {
-	    ball = new Ball(200,200,10,10,1,1);
-		leftPaddle = new Paddle(20,300,10,50,Color.black,speed);
-		rightPaddle = new Paddle(750,300,10,50,Color.black,speed);
-		keys = new boolean[4];
-		ball.setColor(Color.red);
-   
-	
-		
-		
-		
-   }
+
    public void paint(Graphics window)
    {
-	   
-
 		//set up the double buffering to make the game animation nice and smooth
 		Graphics2D twoDGraph = (Graphics2D)window;
-		 back = (BufferedImage)(createImage(getWidth(),getHeight()));
-		//take a snap shot of the current screen and same it as an image
+
+		//take a snap shop of the current screen and same it as an image
 		//that is the exact same width and height as the current screen
 		if(back==null)
 		   back = (BufferedImage)(createImage(getWidth(),getHeight()));
-		
+
 		//create a graphics reference to the back ground image
 		//we will draw all changes on the background image
 		Graphics graphToBack = back.createGraphics();
 
-		graphToBack.drawString("Left Score: " + leftScore, 10, 10);
-		graphToBack.drawString("Right Score: " + rightScore, 700, 10);
+
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
+		graphToBack.setColor(Color.LIGHT_GRAY);
+		graphToBack.fillRect(250, 450, 200, 100);
+		graphToBack.setColor(Color.BLACK);
+		graphToBack.drawString("Player 1: " + Integer.toString(lscore), 260, 500);
+		graphToBack.drawString("Player 2: " + Integer.toString(rscore), 350, 500);
 
 
-		//see if ball hits left wall or right wall
-		if(!(ball.getX()>=10 && ball.getX()<=780)){
-			if(ball.getX()<= 10) {
-				rightScore+=1;
-				ball.setXSpeed(0);
-				ball.setYSpeed(0);
-				
-			}
-			if(ball.getX() >= 780) {
-				leftScore+=1;
-				ball.setXSpeed(0);
-				ball.setYSpeed(0);
-				
-			}
-			restart();
-			
+		//Collide left wall or right wall
+		if (didCollideRight()) {
+			ball.setYSpeed(/*ball.getYSpeed()*/0);
+			ball.setXSpeed(/*-ball.getXSpeed()*/0);
+			lscore++;
+			graphToBack.setColor(Color.LIGHT_GRAY);
+			graphToBack.fillRect(250, 450, 200, 100);
+			graphToBack.setColor(Color.BLACK);
+			graphToBack.drawString("Player 1: " + Integer.toString(lscore), 260, 500);
+			graphToBack.drawString("Player 2: " + Integer.toString(rscore), 350, 500);
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.fillRect(ball.getX(), ball.getY(), 10, 10);
+			ball = null;
+			ball = new Ball(350, 250, 10, 10, Color.BLACK, rand(), rand());
+
 		}
-		//see if the ball hits the top or bottom wall 
-		if(!(ball.getY()>=10 && ball.getY()<= 550)){
-			ball.setYSpeed(-ball.getYSpeed());
-			
-		}
-	//see if the ball hits the left paddle
-		if(ball.getX() == leftPaddle.getX() + leftPaddle.getWidth() && ((leftPaddle.getY() <= ball.getY()) && (ball.getY() <= leftPaddle.getY() + leftPaddle.getHeight()))){
-			//ball.increaseSpeed(ball.getXSpeed());
 
-			ball.setXSpeed(-ball.getXSpeed());
-			
+		
+		if (didCollideLeft()) {
+			ball.setYSpeed(/*ball.getYSpeed()*/0);
+			ball.setXSpeed(/*-ball.getXSpeed()*/0);
+			rscore++;
+			graphToBack.setColor(Color.LIGHT_GRAY);
+			graphToBack.fillRect(250, 450, 200, 100);
+			graphToBack.setColor(Color.BLACK);
+			graphToBack.drawString("Player 1: " + Integer.toString(lscore), 260, 500);
+			graphToBack.drawString("Player 2: " + Integer.toString(rscore), 350, 500);
+			graphToBack.setColor(Color.WHITE);
+			graphToBack.fillRect(ball.getX(), ball.getY(), 10, 10);
+			ball = null;
+			ball = new Ball(350, 250, 10, 10, Color.BLACK, rand(), rand());
+
+
 		}
 		
+		//Collide Top or Bottom Wall
+		if (didCollideTop() || didCollideBottom()) {
+			ball.setYSpeed(-ball.getYSpeed());
+		}
+		
+		
+		//see if the ball hits the left paddle
+		
+		if (didLCollidePaddle(leftPaddle)) {
+			ball.setYSpeed(-ball.getYSpeed());
+			ball.setXSpeed(-ball.getXSpeed());
+		}
 		
 		//see if the ball hits the right paddle
-		if ((ball.getX() == rightPaddle.getX() - rightPaddle.getWidth()) && ((rightPaddle.getY() <= ball.getY()) && (ball.getY() <= rightPaddle.getY() + rightPaddle.getHeight())))
-	        {
-				//ball.increaseSpeed(ball.getXSpeed());
+		
+		if (didRCollidePaddle(rightPaddle)) {
+			ball.setYSpeed(-ball.getYSpeed());
+			ball.setXSpeed(-ball.getXSpeed());
+		}
+		
+	
 
-	        	ball.setXSpeed(-ball.getXSpeed());
 
-	        }
 		//see if the paddles need to be moved
+		
 		if(keys[0] == true)
 		{
-			leftPaddle.moveDownAndDraw(window);
+			//move left paddle up and draw it on the window
+			leftPaddle.moveUpAndDraw(graphToBack);
 		}
 		if(keys[1] == true)
 		{
-			leftPaddle.moveUpAndDraw(window);
+			//move left paddle down and draw it on the window
+			leftPaddle.moveDownAndDraw(graphToBack);
 
 		}
 		if(keys[2] == true)
 		{
-			rightPaddle.moveDownAndDraw(window);
+			rightPaddle.moveUpAndDraw(graphToBack);
 		}
 		if(keys[3] == true)
 		{
-			rightPaddle.moveUpAndDraw(window);
+			rightPaddle.moveDownAndDraw(graphToBack);
 		}
 
+		
+		
+		
+
+
+		
 		twoDGraph.drawImage(back, null, 0, 0);
 	}
 
@@ -147,9 +165,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		switch(toUpperCase(e.getKeyChar()))
 		{
 			case 'W' : keys[0]=true; break;
-			case 'S' : keys[1]=true; break;
+			case 'Z' : keys[1]=true; break;
 			case 'I' : keys[2]=true; break;
-			case 'K' : keys[3]=true; break;
+			case 'M' : keys[3]=true; break;
 		}
 	}
 
@@ -158,9 +176,9 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		switch(toUpperCase(e.getKeyChar()))
 		{
 			case 'W' : keys[0]=false; break;
-			case 'S' : keys[1]=false; break;
+			case 'Z' : keys[1]=false; break;
 			case 'I' : keys[2]=false; break;
-			case 'K' : keys[3]=false; break;
+			case 'M' : keys[3]=false; break;
 		}
 	}
 
@@ -178,5 +196,60 @@ public class Pong extends Canvas implements KeyListener, Runnable
       }catch(Exception e)
       {
       }
-  	}	
+  	}
+   
+   //Collision Detection
+   public boolean didCollideLeft() {
+	   if (ball.getX() < 1) {
+		   return true;
+	   }
+	   return false;
+   }
+   
+   public boolean didCollideRight() {
+	   if (ball.getX() > 780) {
+		   return true;
+	   }
+	   return false;
+   }
+   
+   public boolean didCollideTop() {
+	   if (ball.getY() < 1) {
+		   return true;
+	   }
+	   return false;
+   }
+   
+   public boolean didCollideBottom() {
+	   if (ball.getY() > 550) {
+		   return true;
+	   }
+	   return false;
+   }
+   
+   
+   
+   public boolean didLCollidePaddle(Paddle n) {
+	   if (ball.getY() >= n.getY() && ball.getY() <= (n.getY() + n.getHeight()) && ball.getX() <= n.getX() + n.getWidth()) {
+		   return true;
+	   }
+	   return false;
+   }
+   
+   public boolean didRCollidePaddle(Paddle n) {
+	   if (ball.getY() >= n.getY() && ball.getY() <= (n.getY() + n.getHeight()) && ball.getX() >= n.getX() - n.getWidth()) {
+		   return true;
+	   }
+	   return false;
+   }
+   
+   public int rand() {
+	   int output = (int)(Math.floor((Math.random()*7) - 3));
+	   if (output >= -1 && output <=1) {
+		   return 2;
+	   } else {
+		   return output;
+	   }
+   }
+   
 }

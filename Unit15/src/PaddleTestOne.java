@@ -5,7 +5,7 @@
 import static java.lang.System.*;
 import java.awt.Color;
 
-public class PaddleTestOne
+class PaddleTestOne
 {
 	public static void main( String args[] )
 	{

@@ -11,80 +11,85 @@ public class Block implements Locatable
 	private int yPos;
 	private int width;
 	private int height;
-
 	private Color color;
 
+	
 	public Block()
 	{
-		xPos = 100;
-		yPos = 100;
-		width = 10;
-		height = 10;
-		color = Color.GREEN;
-
+		setX(0);
+		setY(0);
+		setWidth(10);
+		setHeight(10);
+		setColor(Color.WHITE);
 	}
 
 	//add other Block constructors - x , y , width, height, color
-	public Block(int x, int y) {
-		setPos(x,y);
-		width = 10;
-		height = 10;
-		color = Color.GREEN;
-	}
-	public Block(int x, int y, int width) {
-		setPos(x , y);
-		setWidth(width);
-		height = 10;
-		color = Color.GREEN;
-		
-	}
-	
-	public Block(int x, int y, int width, int height) {
-		setPos(x,y);
-		setWidth(width);
-		setHeight(height);
-		color = Color.GREEN;
-	}
-	
-	public Block(int x, int y, int width, int height, Color color) {
-		setPos(x,y);
-		setWidth(width);
-		setHeight(height);
-		setColor(color);
-	}
-   //add the other set methods
-	public void setPos(int x , int y) {
+	public Block(int x , int y) {
 		setX(x);
 		setY(y);
-	  }
-	   
-	  public void setX(int x) {
-		  xPos = x;
-	  }
-	   
-	  public void setY(int y) {
-		  yPos = y;
-	  }
-	   
-	  public void setHeight(int h) {
-		  height = h;
-	  }
-	   
-	  public void setWidth(int w) {
-		  width = w;
-	   }
+		setWidth(10);
+		setHeight(10);
+		setColor(Color.WHITE);
+	}
+	
+	public Block(int x , int y, int widt) {
+		setX(x);
+		setY(y);
+		setWidth(widt);
+		setHeight(10);
+		setColor(Color.WHITE);
+	}
+	
+	public Block(int x , int y, int widt, int ht) {
+		setX(x);
+		setY(y);
+		setWidth(widt);
+		setHeight(ht);
+		setColor(Color.WHITE);
+	}
+	
+	
+	public Block(int x, int y, int wd, int ht, Color colr) {
+		setX(x);
+		setY(y);
+		setWidth(wd);
+		setHeight(ht);
+		setColor(colr);
+	}
+	
+   //add the other set methods
+	public void setPos(int x, int y) {
+		xPos = x;
+		yPos = y;
+	}
+
+	
+	public void setX(int x) {
+		xPos = x;
+	}
+
+	
+	public void setY(int y) {
+		yPos = y;
+	}
 
    public void setColor(Color col)
    {
 	   color = col;
-
    }
-
+   
+   public void setWidth(int wid) {
+	   width = wid;
+   }
+   
+   public void setHeight(int ht) {
+	   height = ht;
+   }
+   
    public void draw(Graphics window)
    {
-   	//uncomment after you write the set and get methods
-	   window.setColor(color);
-	   window.fillRect(getX(), getY(), getWidth(), getHeight());
+      window.setColor(color);
+      window.fillRect(getX(), getY(), getWidth(), getHeight());
    }
 
    public void draw(Graphics window, Color col)
@@ -94,38 +99,42 @@ public class Block implements Locatable
 
    }
    
-	public boolean equals(Object obj)
+	public boolean equals(Block obj)
 	{
-		Block temp = (Block) obj;
-		if(xPos == temp.getX() && yPos == temp.getY() && width == temp.getWidth() && height == temp.getHeight() && color.getRGB() == temp.getColor().getRGB()) {
+		if (this.getX() == obj.getX() && this.getY() == obj.getY() && this.getWidth() == obj.getWidth() && this.getHeight() == obj.getHeight() && this.getColor() == obj.getColor()) {
 			return true;
 		}
+
 		return false;
 	}
-	@Override
+
+
+   //add the other get methods
 	public int getX() {
-		// TODO Auto-generated method stub
-		return xPos;
+		
+		return this.xPos;
 	}
 
-	@Override
 	public int getY() {
-		// TODO Auto-generated method stub
-		return yPos;
-	}   
+		
+		return this.yPos;
+	} 
+	
 	public int getWidth() {
 		return width;
 	}
+	
 	public int getHeight() {
 		return height;
 	}
+	
 	public Color getColor() {
 		return color;
 	}
-   //add the other get methods
-    
-	public String toString() {
-		return xPos + "," + yPos + "," + width + "," + height + "," + color.toString();
-	}
+
    //add a toString() method  - x , y , width, height, color
+	public String toString() {
+		String output = "" + getX() + " " + getY() + " " + getWidth() + " " + getHeight() + " " + getColor();
+		return output;
+	}
 }
