@@ -470,7 +470,10 @@ public class SimplePicture implements DigitalPicture
      }
    }
    
-   bufferedImage = ImageIO.read(file);
+   BufferedImage b = ImageIO.read(file);
+   bufferedImage = new BufferedImage(b.getWidth(), b.getHeight(), BufferedImage.TYPE_INT_ARGB);
+   bufferedImage.getGraphics().drawImage(b, 0, 0, null);
+   
  }
 
 
