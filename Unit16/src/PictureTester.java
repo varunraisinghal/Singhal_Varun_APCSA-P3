@@ -190,11 +190,12 @@ public class PictureTester
   {
 	  Picture beach = new Picture("C:\\Users\\singhalv3635\\Documents\\GitHub\\Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\beach.jpg");
 	  Picture apple1 = new Picture("C:\\Users\\singhalv3635\\Documents\\GitHub\\Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\apple1.jpg");
+	  Picture smallApple1 = apple1.scale(0.4,0.54);
 	  beach.explore();
-	  apple1.explore();
-	  beach.encode(apple1);
+	  smallApple1.explore();
+	  beach.encode(smallApple1);
 	  beach.explore();
-	  beach.decode().explore();			  
+	  beach.decode().explore();;
   }
 
   /** Main method for testing.  Every class can have a main
@@ -204,7 +205,7 @@ public class PictureTester
   {
 	  
 	 //testChromakey();
-	  //testEncodeandDecode1();
+	  testEncodeandDecode1();
 	 testEncodeandDecode2();
     // uncomment a call here to run a test
     // and comment out the ones you don't want

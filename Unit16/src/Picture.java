@@ -124,21 +124,30 @@ public class Picture extends SimplePicture
 		Picture messagePicture = new Picture(height, width);
   		Pixel[][] messagePixels = messagePicture.getPixels2D();
   		int count = 0; 
+  		for (int row = 400; row < 430; row++)
+  		{
+  			for (int col = 240; col < 280; col++)
+  			{
+  				messagePixel = messagePixels[row][col];
+  				messagePixel.setColor(Color.BLACK);
+  			}
+  		}
   		for (int row = 0; row < this.getHeight(); row++)
   		{
   			for (int col = 0; col < this.getWidth(); col++)
   			{
   				currPixel = pixels[row][col];
-  				int num = currPixel.getRed() * currPixel.getGreen();
   				messagePixel = messagePixels[row][col];
-  				if (((currPixel.getRed() * currPixel.getGreen()) % 10) % 2 != 0 && (currPixel.getRed() % 2 != 0) && (currPixel.getGreen() % 2 != 0))
+  				int number = currPixel.getRed() * currPixel.getGreen();
+  				if ((number % 10) % 2 != 0)
   				{
   					messagePixel.setColor(Color.BLACK);
-  					count++;
   				}
+
   			}
   		}
   		
+
   		System.out.println(count);
   		return messagePicture;
   	}
