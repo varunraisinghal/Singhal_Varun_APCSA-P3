@@ -178,8 +178,8 @@ public class PictureTester
   
   public static void testEncodeandDecode1()
   {
-	  Picture beach = new Picture("C:\\Users\\singhalv3635\\Documents\\GitHub\\Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\beach.jpg");
-	  Picture message = new Picture("C:\\Users\\singhalv3635\\Documents\\GitHub\\Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\msg.jpg");
+	  Picture beach = new Picture("C:\\Users\\Varun Singhal\\Documents\\GitHub\\-Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\beach.jpg");
+	  Picture message = new Picture("C:\\Users\\Varun Singhal\\Documents\\GitHub\\-Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\msg.jpg");
 	  beach.explore();
 	  beach.encode(message);
 	  beach.explore();
@@ -188,8 +188,8 @@ public class PictureTester
   
   public static void testEncodeandDecode2()
   {
-	  Picture beach = new Picture("C:\\Users\\singhalv3635\\Documents\\GitHub\\Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\beach.jpg");
-	  Picture apple1 = new Picture("C:\\Users\\singhalv3635\\Documents\\GitHub\\Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\apple1.jpg");
+	  Picture beach = new Picture("C:\\Users\\Varun Singhal\\Documents\\GitHub\\-Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\beach.jpg");
+	  Picture apple1 = new Picture("C:\\Users\\Varun Singhal\\Documents\\GitHub\\-Singhal_Varun_APCSA-P3\\Unit16\\src\\Images\\apple1.jpg");
 	  Picture smallApple1 = apple1.scale(0.4,0.54);
 	  beach.explore();
 	  smallApple1.explore();
